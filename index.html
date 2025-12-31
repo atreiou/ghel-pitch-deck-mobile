@@ -14,12 +14,18 @@
     --bg-dark: #0b0f19;
     --bg-card: rgba(20, 27, 41, 0.95);
     --border-glass: 1px solid rgba(255, 255, 255, 0.15);
+    
+    /* Neon Accents */
     --neon-green: #10b981;
     --neon-cyan: #06b6d4;
     --neon-purple: #8b5cf6;
     --neon-amber: #f59e0b;
     --neon-red: #ef4444;
+    
+    /* Gradients */
     --grad-main: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    
+    /* Text */
     --text-white: #ffffff;
     --text-muted: #94a3b8;
 }
@@ -38,6 +44,7 @@ body {
     color: var(--text-white);
 }
 
+/* SLIDE BASE */
 .slide {
     width: 1280px;
     height: 720px;
@@ -52,49 +59,176 @@ body {
     flex-shrink: 0;
 }
 
-/* BACKGROUNDS */
-.bg-orb { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.35; }
+/* DYNAMIC BACKGROUNDS */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+    opacity: 0.35;
+}
 .orb-1 { width: 600px; height: 600px; background: var(--neon-cyan); top: -300px; right: -200px; }
 .orb-2 { width: 500px; height: 500px; background: var(--neon-purple); bottom: -250px; left: -200px; opacity: 0.2; }
 .orb-3 { width: 400px; height: 400px; background: var(--neon-green); top: 30%; left: 30%; opacity: 0.1; }
 
 /* HEADER */
-.header { padding: 40px 60px 20px 60px; display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 2; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.title-block h2 { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; margin: 0; text-transform: uppercase; color: white; }
-.slide-tag { font-size: 13px; font-weight: 700; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+.header {
+    padding: 40px 60px 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-/* LAYOUTS */
-.content { padding: 30px 60px 60px 60px; height: 100%; position: relative; z-index: 2; display: grid; gap: 25px; }
+.title-block h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.slide-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+/* CONTENT LAYOUTS */
+.content {
+    padding: 30px 60px 60px 60px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 25px;
+}
+
 .grid-text-heavy { grid-template-columns: 1.4fr 0.9fr; }
 .grid-2 { grid-template-columns: 1fr 1fr; gap: 40px; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .grid-market { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 20px; }
 
 /* CARDS */
-.card { background: var(--bg-card); border: var(--border-glass); backdrop-filter: blur(12px); border-radius: 12px; padding: 25px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); height: 100%; }
-.card-highlight { border: 1px solid rgba(16, 185, 129, 0.4); background: linear-gradient(160deg, rgba(16, 185, 129, 0.08) 0%, rgba(20, 27, 41, 0.9) 100%); }
-.card-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-white); display: flex; align-items: center; gap: 12px; text-transform: uppercase; }
-.card-text { font-size: 15px; line-height: 1.5; color: var(--text-muted); }
-.card-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-#slide-2 .card-text { min-height: 90px; }
+.card {
+    background: var(--bg-card);
+    border: var(--border-glass);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    height: 100%;
+}
 
-/* LISTS */
+.card-highlight {
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: linear-gradient(160deg, rgba(16, 185, 129, 0.08) 0%, rgba(20, 27, 41, 0.9) 100%);
+}
+
+.card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* ALIGNMENT FIX FOR SLIDE 2 */
+#slide-2 .card-text {
+    min-height: 90px;
+}
+
+.card-footer {
+    margin-top: auto; 
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LISTS INSIDE CARDS */
 .dense-list { list-style: none; padding: 0; margin: 0; }
-.dense-list li { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; padding-left: 0; display: flex; align-items: center; gap: 12px; line-height: 1.4; }
-.dense-list li i { color: var(--neon-cyan); font-size: 14px; width: 20px; text-align: center; flex-shrink: 0; }
+.dense-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding-left: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.dense-list li i {
+    color: var(--neon-cyan);
+    font-size: 14px;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
 
 /* TYPOGRAPHY */
 h1 { font-family: 'Outfit', sans-serif; font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -2px; margin: 0 0 20px 0; }
 p { font-size: 16px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; max-width: 90%; }
 strong { color: var(--text-white); font-weight: 700; }
-.text-gradient { background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* IMAGES & LABELS */
-.img-box { width: 100%; height: 100%; border-radius: 12px; overflow: hidden; position: relative; border: var(--border-glass); background: #000; }
-.img-box img, .title-img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
-.title-img-container { position: relative; width: 100%; height: 100%; }
+.text-gradient {
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-/* Unified Label Class */
+/* COMPONENT: IMAGES */
+.img-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: var(--border-glass);
+    background: #000;
+}
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+.title-img-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.title-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FLOATING BADGE */
 .img-label, .floating-badge {
     position: absolute;
     bottom: 20px; 
@@ -133,9 +267,15 @@ strong { color: var(--text-white); font-weight: 700; }
 .roadmap-step { background: rgba(255,255,255,0.03); border: 1px solid; padding: 15px; border-radius: 8px; text-align: center; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 .roadmap-step:not(:last-child)::after { content: '\f061'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px; z-index: 2; background: var(--bg-dark); border-radius: 50%; }
 .roadmap-icon { font-size: 18px; margin-bottom: 8px; }
+
+/* TABLE STYLES */
 .table-container { background: var(--bg-card); border: var(--border-glass); border-radius: 12px; overflow: hidden; margin-top: 10px; }
 .table-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.table-row:last-child { border-bottom: none; }
+.table-row:nth-child(even) { background: rgba(255,255,255,0.02); }
 .table-cell { padding: 20px; display: flex; align-items: center; font-size: 15px; border-right: 1px solid rgba(255,255,255,0.05); }
+.table-cell:last-child { border-right: none; background: rgba(6, 182, 212, 0.05); border-left: 2px solid var(--neon-cyan); font-weight: 700; color: var(--neon-cyan); }
+.table-head .table-cell { color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; background: rgba(0,0,0,0.2); }
 
 /* LOCK SCREEN */
 #lock-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b0f19; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
@@ -147,16 +287,98 @@ strong { color: var(--text-white); font-weight: 700; }
 .error-msg { color: #ef4444; font-size: 14px; margin-top: 15px; display: none; }
 #main-content { display: none; flex-direction: column; align-items: center; gap: 60px; width: 100%; }
 
-/* MOBILE OPTIMIZATION */
+/* --- MOBILE OPTIMIZATION (BREAKPOINT < 1200px) --- */
 @media screen and (max-width: 1200px) {
-    body { padding: 20px; }
-    .slide { width: 100%; height: auto; min-height: 700px; overflow: visible; margin-top: 20px; border-radius: 12px; }
-    .content { padding: 30px; display: flex; flex-direction: column; gap: 30px; }
-    .title-img-container, .img-box { height: 400px !important; width: 100%; order: -1; }
-    .grid-text-heavy, .grid-2, .grid-3, .grid-market { display: flex; flex-direction: column; gap: 20px; }
-    h1 { font-size: 48px; } .title-block h2 { font-size: 28px; } p { font-size: 16px; }
-    .header { padding: 30px 30px 10px 30px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    body { padding: 10px; }
+    
+    .slide {
+        width: 100%;
+        height: auto;
+        min-height: 700px;
+        overflow: visible;
+        margin-top: 20px;
+        border-radius: 12px;
+    }
+
+    .content {
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center; /* Center all content */
+    }
+
+    /* Stack Grids Vertically */
+    .grid-text-heavy, .grid-2, .grid-3, .grid-market {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Slide 1 Specifics for Mobile */
+    .slide:first-child .content {
+        display: flex !important;
+        flex-direction: column !important; /* Stack vertically */
+        padding: 0 !important;
+    }
+    .slide:first-child .content > div:first-child {
+        padding: 40px 20px !important;
+        order: 2; /* Text goes below image */
+        align-items: center;
+    }
+    .title-img-container {
+        height: 350px !important;
+        width: 100% !important;
+        order: 1; /* Image goes on top */
+    }
+
+    /* Center Header */
+    .header {
+        padding: 30px 20px 10px 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+    }
+    .title-block { align-items: center; display: flex; flex-direction: column; }
+
+    /* Adjust Typography for Mobile */
+    h1 { font-size: 42px; }
+    .title-block h2 { font-size: 28px; }
+    p { font-size: 16px; margin: 0 auto 20px auto; }
+    
+    /* Center Cards */
+    .card { align-items: center; text-align: center; }
+    .card-title { justify-content: center; }
+    .stat-row { flex-direction: column; gap: 5px; }
+
+    /* Mobile Table Scroll */
+    .table-container {
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+    .table-row {
+        min-width: 600px; /* Force scroll */
+    }
+
+    /* Images */
+    .img-box {
+        width: 100%;
+        height: 300px !important;
+        order: -1; /* Images appear before text in standard content slides */
+    }
+
+    /* Lock Screen Mobile */
     .lock-container { width: 90%; padding: 30px; }
+    .lock-title { font-size: 20px; }
+}
+
+@media print {
+    body { background: none; padding: 0; margin: 0; }
+    .slide { margin: 0; border: none; box-shadow: none; break-after: page; }
+    #lock-screen { display: none !important; }
+    #main-content { display: flex !important; }
 }
     </style>
 </head>
@@ -191,15 +413,11 @@ strong { color: var(--text-white); font-weight: 700; }
 <!-- DECK CONTENT -->
 <div id="main-content">
 
-    <!-- SLIDE 1: TITLE (SWAPPED LAYOUT) -->
+    <!-- SLIDE 1: TITLE -->
     <div class="slide">
         <div class="bg-orb orb-1"></div>
         <div class="bg-orb orb-2"></div>
-        <div class="content" style="display: grid; grid-template-columns: 0.7fr 1.3fr; width: 100%; height: 100%; padding: 0;">
-            <div class="title-img-container">
-                <img src="slide1.jpg" alt="Grid Crisis">
-                <div class="img-label" style="background: rgba(11, 15, 25, 0.95);">Energy generation apocalypse incoming?</div>
-            </div>
+        <div class="content" style="display: grid; grid-template-columns: 1.3fr 0.7fr; width: 100%; height: 100%; padding: 0;">
             <div style="padding: 80px; display: flex; flex-direction: column; justify-content: center; z-index: 2;">
                 <div style="display: flex; gap: 15px; margin-bottom: 30px;">
                     <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--neon-green); border-radius: 4px; font-size: 12px; font-weight: 700; color: var(--neon-green); text-transform: uppercase;">Seed Round</span>
@@ -212,6 +430,10 @@ strong { color: var(--text-white); font-weight: 700; }
                     <div><div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 5px;">Joint Venture Partner</div><div style="font-size: 18px; font-weight: 700; color: white;">Harper Adams University</div></div>
                 </div>
             </div>
+            <div class="title-img-container">
+                <img src="slide1.jpg" onerror="this.src='https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'">
+                <div class="img-label">Energy generation apocalypse incoming?</div>
+            </div>
         </div>
     </div>
 
@@ -220,30 +442,27 @@ strong { color: var(--text-white); font-weight: 700; }
         <div class="bg-orb orb-3"></div>
         <div class="header"><div><div class="slide-tag">Market Context</div><div class="title-block"><h2>Why Now?</h2></div></div></div>
         <div class="content grid-3">
-            <!-- Card 1 -->
             <div class="card" style="border-top: 4px solid var(--neon-red);">
                 <div class="card-title"><i class="fa-solid fa-triangle-exclamation" style="color: var(--neon-red);"></i> Grid Crisis</div>
                 <p class="card-text">The centralized grid has become the primary bottleneck for Net Zero. Aging pylons cannot handle decentralized loads.</p>
                 <div class="status-bar-container"><div class="status-label">Capacity</div><div class="status-track"><div class="status-fill" style="width: 95%; background: var(--neon-red);"></div></div><div style="font-size: 10px; color: var(--neon-red); font-weight: 700;">CRITICAL</div></div>
-                <div class="impact-block" style="border-color: var(--neon-red); color: #fca5a5;"><strong>Waste:</strong> Grid constraints forced £1B+ in renewable energy curtailment payments in 2023.</div>
+                <div class="impact-block" style="border-color: var(--neon-red); color: #fca5a5;"><strong>Economic Waste:</strong><br>Grid constraints forced £1B+ in renewable energy curtailment payments in 2023.</div>
                 <div class="consequence-block"><i class="fa-solid fa-ban"></i><span>Consequence: Housing projects blocked.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-red);">Wait Time</div><div style="font-size: 24px; font-weight: 700; color: white;">15 Years</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">For new connections in key UK regions.</div></div></div>
             </div>
-            <!-- Card 2 -->
             <div class="card" style="border-top: 4px solid var(--neon-cyan);">
                 <div class="card-title"><i class="fa-solid fa-arrow-trend-up" style="color: var(--neon-cyan);"></i> Demand Shock</div>
                 <p class="card-text">Electrification is doubling demand. EVs require massive charging loads, while AI Data Centers consume gigawatts.</p>
                 <div class="status-bar-container"><div class="status-label">Growth</div><div class="status-track"><div class="status-fill" style="width: 80%; background: var(--neon-cyan);"></div></div><div style="font-size: 10px; color: var(--neon-cyan); font-weight: 700;">SURGING</div></div>
-                <div class="impact-block" style="border-color: var(--neon-cyan); color: #67e8f9;"><strong>Imbalance:</strong> Peak EV charging loads often coincide with low solar availability in evenings.</div>
+                <div class="impact-block" style="border-color: var(--neon-cyan); color: #67e8f9;"><strong>Load Imbalance:</strong><br>Peak EV charging loads often coincide with low solar availability in evenings.</div>
                 <div class="consequence-block"><i class="fa-solid fa-plug-circle-xmark"></i><span>Consequence: Local grid instability.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-cyan);">Growth</div><div style="font-size: 24px; font-weight: 700; color: white;">2x Demand</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">Projected global increase by 2040.</div></div></div>
             </div>
-            <!-- Card 3 -->
             <div class="card" style="border-top: 4px solid var(--neon-purple);">
                 <div class="card-title"><i class="fa-solid fa-shield-halved" style="color: var(--neon-purple);"></i> National Security</div>
                 <p class="card-text">Centralized power is a single point of failure. Resilience now requires "Island Mode" capability for critical sites.</p>
                 <div class="status-bar-container"><div class="status-label">Risk</div><div class="status-track"><div class="status-fill" style="width: 70%; background: var(--neon-purple);"></div></div><div style="font-size: 10px; color: var(--neon-purple); font-weight: 700;">HIGH</div></div>
-                <div class="impact-block" style="border-color: var(--neon-purple); color: #d8b4fe;"><strong>Threat:</strong> Physical and cyber-attacks on infrastructure are rising globally.</div>
+                <div class="impact-block" style="border-color: var(--neon-purple); color: #d8b4fe;"><strong>Active Threat:</strong><br>Physical and cyber-attacks on infrastructure are rising globally.</div>
                 <div class="consequence-block"><i class="fa-solid fa-power-off"></i><span>Consequence: Critical infrastructure failure.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-purple);">Requirement</div><div style="font-size: 24px; font-weight: 700; color: white;">Off-Grid</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">Secure local generation.</div></div></div>
             </div>
@@ -265,7 +484,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide3.jpg" alt="Future City">
+                <img src="slide3.jpg" onerror="this.src='https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
                 <div class="img-label" style="left: 20px; right: auto;">Future Vision: Distributed Generation</div>
             </div>
         </div>
@@ -278,31 +497,19 @@ strong { color: var(--text-white); font-weight: 700; }
         <div class="content grid-text-heavy"> 
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <p>A modular vertical power plant designed for the built environment. It combines <strong>Dual-Face Solar</strong> with <strong>Micro Wind Turbines (MWT)</strong>.</p>
-                
                 <div class="card" style="padding: 15px; margin-bottom: 10px;">
                     <div class="card-title" style="font-size: 16px;"><i class="fa-solid fa-arrows-to-circle" style="color: var(--neon-green);"></i> Aerodynamic Funnel</div>
                     <p class="card-text" style="font-size: 13px;">The 'Zig-Zag' PV array funnels wind into the turbines, mechanically increasing velocity.</p>
                 </div>
-
                 <div class="card" style="flex: 1; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); gap: 10px; padding: 15px;">
                     <div style="font-size: 12px; text-transform: uppercase; color: var(--neon-green); font-weight: 700; margin-bottom: 5px;">How It Works</div>
-                    <div class="mech-step" style="padding: 6px;">
-                        <div class="mech-icon"><i class="fa-solid fa-sun"></i></div>
-                        <div><div style="font-weight: 600; font-size: 12px;">1. Reflection</div><div style="font-size: 11px; color: var(--text-muted);">Angled PV surfaces increase solar yield by 20%.</div></div>
-                    </div>
-                    <div class="mech-step" style="padding: 6px;">
-                        <div class="mech-icon"><i class="fa-solid fa-compress"></i></div>
-                        <div><div style="font-weight: 600; font-size: 12px;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an intake scoop for air.</div></div>
-                    </div>
-                    <div class="mech-step" style="padding: 6px;">
-                        <div class="mech-icon"><i class="fa-solid fa-wind"></i></div>
-                        <div><div style="font-weight: 600; font-size: 12px;">3. Acceleration</div><div style="font-size: 11px; color: var(--text-muted);">Velocity doubles before hitting turbine blades.</div></div>
-                    </div>
+                    <div class="mech-step" style="padding: 6px;"><div class="mech-icon"><i class="fa-solid fa-sun"></i></div><div><div style="font-weight: 600; font-size: 12px;">1. Reflection</div><div style="font-size: 11px; color: var(--text-muted);">Angled PV surfaces increase solar yield by 20%.</div></div></div>
+                    <div class="mech-step" style="padding: 6px;"><div class="mech-icon"><i class="fa-solid fa-compress"></i></div><div><div style="font-weight: 600; font-size: 12px;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an intake scoop for air.</div></div></div>
+                    <div class="mech-step" style="padding: 6px;"><div class="mech-icon"><i class="fa-solid fa-wind"></i></div><div><div style="font-weight: 600; font-size: 12px;">3. Acceleration</div><div style="font-size: 11px; color: var(--text-muted);">Velocity doubles before hitting turbine blades.</div></div></div>
                 </div>
             </div>
-            
             <div class="img-box" style="height: 100%; overflow: hidden;">
-                <img src="slide4.jpg" alt="Hybrid Tower">
+                <img src="slide4.jpg" onerror="this.src='https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'" style="height: 100%; width: 100%; object-fit: cover;">
                 <div class="img-label">AI vision of design potential</div>
             </div>
         </div>
@@ -329,7 +536,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide5.jpg" alt="CFD Simulation">
+                <img src="slide5.jpg" onerror="this.src='https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
                 <div class="img-label">CFD Analysis: Flow Acceleration</div>
             </div>
         </div>
@@ -341,15 +548,13 @@ strong { color: var(--text-white); font-weight: 700; }
         <div class="header"><div><div class="slide-tag">Unit Economics</div><div class="title-block"><h2>The 5p Advantage</h2></div></div></div>
         <div class="content">
             <div style="margin-top: 10px; background: var(--bg-card); border: var(--border-glass); border-radius: 12px; overflow: hidden;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
-                    <thead><tr style="background: rgba(255,255,255,0.03);"><th style="text-align: left; padding: 25px; color: var(--text-muted); font-weight: 600; font-size: 14px; letter-spacing: 1px;">METRIC</th><th style="text-align: left; padding: 25px; font-weight: 700;">GRID POWER</th><th style="text-align: left; padding: 25px; font-weight: 700;">STANDARD SOLAR</th><th style="text-align: left; padding: 25px; color: var(--neon-cyan); font-weight: 800; background: rgba(6, 182, 212, 0.1);">GHEL HYBRID</th></tr></thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>LCOE (Cost/kWh)</strong></td><td style="padding: 25px;">~27p</td><td style="padding: 25px;">4p to 6p</td><td style="padding: 25px; color: var(--neon-green); font-weight: 700; background: rgba(6, 182, 212, 0.05);">5p</td></tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>Availability</strong></td><td style="padding: 25px;">24/7</td><td style="padding: 25px;">Daylight Only</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">Day & Night</td></tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>Winter Yield</strong></td><td style="padding: 25px;">High</td><td style="padding: 25px; color: var(--neon-red);">Very Low</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">High (Wind Peak)</td></tr>
-                        <tr><td style="padding: 25px;"><strong>Footprint</strong></td><td style="padding: 25px;">N/A</td><td style="padding: 25px;">Large Roof Area</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">0.7m² (Compact)</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <div class="table-row" style="background: rgba(255,255,255,0.03);"><div class="table-cell" style="color: var(--text-muted); font-weight: 600; font-size: 12px; text-transform: uppercase;">METRIC</div><div class="table-cell" style="font-weight: 700;">GRID POWER</div><div class="table-cell" style="font-weight: 700;">STANDARD SOLAR</div><div class="table-cell" style="color: var(--neon-cyan); font-weight: 800; background: rgba(6, 182, 212, 0.1);">GHEL HYBRID</div></div>
+                    <div class="table-row"><div class="table-cell"><strong>LCOE (Cost/kWh)</strong></div><div class="table-cell">~27p</div><div class="table-cell">4p to 6p</div><div class="table-cell" style="color: var(--neon-green); font-weight: 700;">5p</div></div>
+                    <div class="table-row"><div class="table-cell"><strong>Availability</strong></div><div class="table-cell">24/7</div><div class="table-cell">Daylight Only</div><td class="table-cell" style="color: var(--text-white);">Day & Night</td></div>
+                    <div class="table-row"><div class="table-cell"><strong>Winter Yield</strong></div><div class="table-cell">High</div><div class="table-cell" style="color: var(--neon-red);">Very Low</div><td class="table-cell" style="color: var(--text-white);">High (Wind Peak)</td></div>
+                    <div class="table-row"><div class="table-cell"><strong>Footprint</strong></div><div class="table-cell">N/A</div><div class="table-cell">Large Roof Area</div><td class="table-cell" style="color: var(--text-white);">0.7m² (Compact)</td></div>
+                </div>
             </div>
             <div style="margin-top: 20px; display: flex; gap: 20px;">
                 <div class="card" style="flex: 1; padding: 15px; flex-direction: row; align-items: center; gap: 15px;"><i class="fa-solid fa-microchip" style="color: var(--neon-purple); font-size: 20px;"></i><div style="font-size: 14px; color: var(--text-muted);">Smart Battery Optimization Included</div></div>
@@ -441,7 +646,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide9.jpg" alt="Wind Car Concept">
+                <img src="slide9.jpg" onerror="this.src='https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
                 <div class="img-label">The "Wind Car" Concept</div>
             </div>
         </div>
@@ -514,7 +719,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 <div class="card card-highlight"><div class="card-title">Investor Value</div><p class="card-text" style="color: var(--text-white);">Investors retain a continuing financial interest (royalties/equity) in the Spin-Off entity post-acquisition.</p></div>
             </div>
             <div class="img-box">
-                <img src="slide12.jpg" alt="Strategy Meeting">
+                <img src="slide12.jpg" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
                 <div class="img-label">Strategic Partnership Vision</div>
             </div>
         </div>
