@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GHEL Investor Presentation (Confidential)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,18 +14,12 @@
     --bg-dark: #0b0f19;
     --bg-card: rgba(20, 27, 41, 0.95);
     --border-glass: 1px solid rgba(255, 255, 255, 0.15);
-    
-    /* Neon Accents */
     --neon-green: #10b981;
     --neon-cyan: #06b6d4;
     --neon-purple: #8b5cf6;
     --neon-amber: #f59e0b;
     --neon-red: #ef4444;
-    
-    /* Gradients */
     --grad-main: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-    
-    /* Text */
     --text-white: #ffffff;
     --text-muted: #94a3b8;
 }
@@ -100,33 +94,23 @@ strong { color: var(--text-white); font-weight: 700; }
 .img-box img, .title-img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 .title-img-container { position: relative; width: 100%; height: 100%; }
 
-/* Unified Label Class - FORCED STYLES */
+/* Unified Label Class */
 .img-label, .floating-badge {
     position: absolute;
     bottom: 20px; 
-    left: 20px; 
-    background: rgba(11, 15, 25, 0.95) !important; /* Force dark background */
+    left: 20px !important; 
+    right: auto !important;
+    background: rgba(11, 15, 25, 0.95) !important; 
     padding: 10px 15px; 
     border-radius: 8px; 
     border: 1px solid rgba(255,255,255,0.2);
     color: white;
     font-weight: 600;
     font-size: 12px;
-    z-index: 50; /* Ensure on top */
+    z-index: 50; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     pointer-events: none;
 }
-
-.img-box::after, .title-img-container::after {
-    content: 'Drag & Drop Image Here';
-    position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    color: white; font-size: 12px; font-weight: bold;
-    pointer-events: none; opacity: 0; transition: opacity 0.2s;
-    background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 4px;
-    z-index: 10;
-}
-.img-box:hover::after, .title-img-container:hover::after { opacity: 1; }
 
 /* MISC COMPONENTS */
 .status-bar-container { height: 40px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 6px; margin-top: 5px; }
@@ -155,61 +139,24 @@ strong { color: var(--text-white); font-weight: 700; }
 
 /* LOCK SCREEN */
 #lock-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b0f19; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
-.lock-container { background: rgba(20, 27, 41, 0.95); border: 1px solid rgba(255, 255, 255, 0.15); padding: 60px; border-radius: 20px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 500px; position: relative; overflow: hidden; }
-.lock-container::before { content: ''; position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: var(--neon-green); filter: blur(60px); opacity: 0.2; }
+.lock-container { background: rgba(20, 27, 41, 0.95); border: 1px solid rgba(255, 255, 255, 0.15); padding: 60px; border-radius: 20px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 600px; position: relative; overflow: hidden; }
 .lock-title { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 30px; letter-spacing: 2px; }
-.lock-icon-container { margin-bottom: 15px; font-size: 32px; color: var(--neon-cyan); }
 .lock-input { width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-family: 'Inter', sans-serif; font-size: 16px; margin-bottom: 20px; text-align: center; outline: none; transition: border 0.3s; }
 .lock-input:focus { border-color: var(--neon-cyan); }
 .lock-btn { width: 100%; padding: 15px; background: var(--grad-main); border: none; border-radius: 8px; color: white; font-weight: 700; cursor: pointer; font-size: 16px; transition: opacity 0.3s; }
-.lock-btn:hover { opacity: 0.9; }
 .error-msg { color: #ef4444; font-size: 14px; margin-top: 15px; display: none; }
 #main-content { display: none; flex-direction: column; align-items: center; gap: 60px; width: 100%; }
 
 /* MOBILE OPTIMIZATION */
 @media screen and (max-width: 1200px) {
     body { padding: 20px; }
-    
-    .slide {
-        width: 100%;
-        height: auto;
-        min-height: 700px;
-        overflow: visible;
-        margin-top: 20px;
-        border-radius: 12px;
-    }
-
-    .content {
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .title-img-container, .img-box {
-        height: 400px !important;
-        width: 100%;
-        order: -1;
-    }
-
-    .grid-text-heavy, .grid-2, .grid-3, .grid-market {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    h1 { font-size: 48px; }
-    .title-block h2 { font-size: 28px; }
-    p { font-size: 16px; }
+    .slide { width: 100%; height: auto; min-height: 700px; overflow: visible; margin-top: 20px; border-radius: 12px; }
+    .content { padding: 30px; display: flex; flex-direction: column; gap: 30px; }
+    .title-img-container, .img-box { height: 400px !important; width: 100%; order: -1; }
+    .grid-text-heavy, .grid-2, .grid-3, .grid-market { display: flex; flex-direction: column; gap: 20px; }
+    h1 { font-size: 48px; } .title-block h2 { font-size: 28px; } p { font-size: 16px; }
     .header { padding: 30px 30px 10px 30px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .lock-container { width: 90%; padding: 30px; }
-}
-
-@media print {
-    body { background: none; padding: 0; margin: 0; }
-    .slide { margin: 0; border: none; box-shadow: none; break-after: page; }
-    #lock-screen { display: none !important; }
-    #main-content { display: flex !important; }
 }
     </style>
 </head>
@@ -218,9 +165,9 @@ strong { color: var(--text-white); font-weight: 700; }
 <!-- LOCK SCREEN -->
 <div id="lock-screen">
     <div class="lock-container">
-        <div class="lock-icon-container"><i class="fa-solid fa-lock"></i></div>
+        <div class="lock-icon-container"><i class="fa-solid fa-lock" style="font-size: 32px; color: var(--neon-cyan); margin-bottom: 15px;"></i></div>
         <div class="lock-title">CONFIDENTIAL</div>
-        <p style="font-size: 14px; color: #94a3b8; margin: 0 auto 30px auto; width: 100%; text-align: center; max-width: none;">This deck contains proprietary information. Please enter access code.</p>
+        <p style="font-size: 14px; color: #94a3b8; margin: 0 auto 30px auto; width: 100%; text-align: center; white-space: nowrap;">This deck contains proprietary information. Please enter access code.</p>
         <input type="password" id="password" class="lock-input" placeholder="Enter Password" onkeypress="if(event.key === 'Enter') checkPassword()">
         <button class="lock-btn" onclick="checkPassword()">UNLOCK DECK</button>
         <div id="error-msg" class="error-msg">Incorrect Password</div>
@@ -239,40 +186,20 @@ strong { color: var(--text-white); font-weight: 700; }
             document.getElementById('password').value = '';
         }
     }
-    
-    // DRAG AND DROP LOGIC (Saves Base64)
-    document.addEventListener('DOMContentLoaded', () => {
-        const containers = document.querySelectorAll('.img-box, .title-img-container');
-        containers.forEach(container => {
-            const img = container.querySelector('img');
-            container.addEventListener('dragover', (e) => { e.preventDefault(); img.style.opacity = '0.5'; container.style.outline = '4px solid #10b981'; });
-            container.addEventListener('dragleave', (e) => { img.style.opacity = '0.9'; container.style.outline = 'none'; });
-            container.addEventListener('drop', (e) => {
-                e.preventDefault(); 
-                img.style.opacity = '1'; 
-                container.style.outline = 'none';
-                
-                const file = e.dataTransfer.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => { 
-                        img.src = e.target.result; 
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
-    });
 </script>
 
 <!-- DECK CONTENT -->
 <div id="main-content">
 
-    <!-- SLIDE 1: TITLE -->
+    <!-- SLIDE 1: TITLE (SWAPPED LAYOUT) -->
     <div class="slide">
         <div class="bg-orb orb-1"></div>
         <div class="bg-orb orb-2"></div>
-        <div class="content" style="display: grid; grid-template-columns: 1.3fr 0.7fr; width: 100%; height: 100%; padding: 0;">
+        <div class="content" style="display: grid; grid-template-columns: 0.7fr 1.3fr; width: 100%; height: 100%; padding: 0;">
+            <div class="title-img-container">
+                <img src="slide1.jpg" alt="Grid Crisis">
+                <div class="img-label" style="background: rgba(11, 15, 25, 0.95);">Energy generation apocalypse incoming?</div>
+            </div>
             <div style="padding: 80px; display: flex; flex-direction: column; justify-content: center; z-index: 2;">
                 <div style="display: flex; gap: 15px; margin-bottom: 30px;">
                     <span style="padding: 6px 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--neon-green); border-radius: 4px; font-size: 12px; font-weight: 700; color: var(--neon-green); text-transform: uppercase;">Seed Round</span>
@@ -284,10 +211,6 @@ strong { color: var(--text-white); font-weight: 700; }
                     <div><div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 5px;">Primary Entity</div><div style="font-size: 18px; font-weight: 700; color: white;">Green Hybrid Energy</div></div>
                     <div><div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 5px;">Joint Venture Partner</div><div style="font-size: 18px; font-weight: 700; color: white;">Harper Adams University</div></div>
                 </div>
-            </div>
-            <div class="title-img-container">
-                <img src="slide1.jpg" onerror="this.src='https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'">
-                <div class="img-label">Energy generation apocalypse incoming?</div>
             </div>
         </div>
     </div>
@@ -302,27 +225,25 @@ strong { color: var(--text-white); font-weight: 700; }
                 <div class="card-title"><i class="fa-solid fa-triangle-exclamation" style="color: var(--neon-red);"></i> Grid Crisis</div>
                 <p class="card-text">The centralized grid has become the primary bottleneck for Net Zero. Aging pylons cannot handle decentralized loads.</p>
                 <div class="status-bar-container"><div class="status-label">Capacity</div><div class="status-track"><div class="status-fill" style="width: 95%; background: var(--neon-red);"></div></div><div style="font-size: 10px; color: var(--neon-red); font-weight: 700;">CRITICAL</div></div>
-                <div class="impact-block" style="border-color: var(--neon-red); color: #fca5a5;"><strong>Economic Waste:</strong><br>Grid constraints forced £1B+ in renewable energy curtailment payments in 2023.</div>
+                <div class="impact-block" style="border-color: var(--neon-red); color: #fca5a5;"><strong>Waste:</strong> Grid constraints forced £1B+ in renewable energy curtailment payments in 2023.</div>
                 <div class="consequence-block"><i class="fa-solid fa-ban"></i><span>Consequence: Housing projects blocked.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-red);">Wait Time</div><div style="font-size: 24px; font-weight: 700; color: white;">15 Years</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">For new connections in key UK regions.</div></div></div>
             </div>
-            
             <!-- Card 2 -->
             <div class="card" style="border-top: 4px solid var(--neon-cyan);">
                 <div class="card-title"><i class="fa-solid fa-arrow-trend-up" style="color: var(--neon-cyan);"></i> Demand Shock</div>
                 <p class="card-text">Electrification is doubling demand. EVs require massive charging loads, while AI Data Centers consume gigawatts.</p>
                 <div class="status-bar-container"><div class="status-label">Growth</div><div class="status-track"><div class="status-fill" style="width: 80%; background: var(--neon-cyan);"></div></div><div style="font-size: 10px; color: var(--neon-cyan); font-weight: 700;">SURGING</div></div>
-                <div class="impact-block" style="border-color: var(--neon-cyan); color: #67e8f9;"><strong>Load Imbalance:</strong><br>Peak EV charging loads often coincide with low solar availability in evenings.</div>
+                <div class="impact-block" style="border-color: var(--neon-cyan); color: #67e8f9;"><strong>Imbalance:</strong> Peak EV charging loads often coincide with low solar availability in evenings.</div>
                 <div class="consequence-block"><i class="fa-solid fa-plug-circle-xmark"></i><span>Consequence: Local grid instability.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-cyan);">Growth</div><div style="font-size: 24px; font-weight: 700; color: white;">2x Demand</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">Projected global increase by 2040.</div></div></div>
             </div>
-            
             <!-- Card 3 -->
             <div class="card" style="border-top: 4px solid var(--neon-purple);">
                 <div class="card-title"><i class="fa-solid fa-shield-halved" style="color: var(--neon-purple);"></i> National Security</div>
                 <p class="card-text">Centralized power is a single point of failure. Resilience now requires "Island Mode" capability for critical sites.</p>
                 <div class="status-bar-container"><div class="status-label">Risk</div><div class="status-track"><div class="status-fill" style="width: 70%; background: var(--neon-purple);"></div></div><div style="font-size: 10px; color: var(--neon-purple); font-weight: 700;">HIGH</div></div>
-                <div class="impact-block" style="border-color: var(--neon-purple); color: #d8b4fe;"><strong>Active Threat:</strong><br>Physical and cyber-attacks on infrastructure are rising globally.</div>
+                <div class="impact-block" style="border-color: var(--neon-purple); color: #d8b4fe;"><strong>Threat:</strong> Physical and cyber-attacks on infrastructure are rising globally.</div>
                 <div class="consequence-block"><i class="fa-solid fa-power-off"></i><span>Consequence: Critical infrastructure failure.</span></div>
                 <div class="card-footer"><div class="stat-row"><div><div style="font-size: 12px; color: var(--neon-purple);">Requirement</div><div style="font-size: 24px; font-weight: 700; color: white;">Off-Grid</div></div><div style="font-size: 11px; text-align: right; color: var(--text-muted); max-width: 100px;">Secure local generation.</div></div></div>
             </div>
@@ -344,7 +265,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide3.jpg" onerror="this.src='https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                <img src="slide3.jpg" alt="Future City">
                 <div class="img-label" style="left: 20px; right: auto;">Future Vision: Distributed Generation</div>
             </div>
         </div>
@@ -354,39 +275,35 @@ strong { color: var(--text-white); font-weight: 700; }
     <div class="slide">
         <div class="bg-orb orb-1"></div>
         <div class="header"><div><div class="slide-tag">Product Architecture</div><div class="title-block"><h2>The Hybrid Tower</h2></div></div></div>
-        
         <div class="content grid-text-heavy"> 
-            
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <p>A modular vertical power plant designed for the built environment. It combines <strong>Dual-Face Solar</strong> with <strong>Micro Wind Turbines (MWT)</strong>.</p>
                 
-                <!-- CARD 1: Intro -->
-                <div class="card" style="padding: 20px; flex: 0 0 auto;">
+                <div class="card" style="padding: 15px; margin-bottom: 10px;">
                     <div class="card-title" style="font-size: 16px;"><i class="fa-solid fa-arrows-to-circle" style="color: var(--neon-green);"></i> Aerodynamic Funnel</div>
                     <p class="card-text" style="font-size: 13px;">The 'Zig-Zag' PV array funnels wind into the turbines, mechanically increasing velocity.</p>
                 </div>
 
-                <!-- CARD 2: How It Works -->
                 <div class="card" style="flex: 1; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); gap: 10px; padding: 15px;">
                     <div style="font-size: 12px; text-transform: uppercase; color: var(--neon-green); font-weight: 700; margin-bottom: 5px;">How It Works</div>
-                    <div class="mech-step" style="padding: 8px;">
+                    <div class="mech-step" style="padding: 6px;">
                         <div class="mech-icon"><i class="fa-solid fa-sun"></i></div>
-                        <div><div style="font-size: 12px; color: white; font-weight: 600;">1. Reflection</div><div style="font-size: 11px; color: var(--text-muted);">Angled PV surfaces increase solar yield by 20%.</div></div>
+                        <div><div style="font-weight: 600; font-size: 12px;">1. Reflection</div><div style="font-size: 11px; color: var(--text-muted);">Angled PV surfaces increase solar yield by 20%.</div></div>
                     </div>
-                    <div class="mech-step" style="padding: 8px;">
+                    <div class="mech-step" style="padding: 6px;">
                         <div class="mech-icon"><i class="fa-solid fa-compress"></i></div>
-                        <div><div style="font-size: 12px; color: white; font-weight: 600;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an intake scoop for air.</div></div>
+                        <div><div style="font-weight: 600; font-size: 12px;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an intake scoop for air.</div></div>
                     </div>
-                    <div class="mech-step" style="padding: 8px;">
+                    <div class="mech-step" style="padding: 6px;">
                         <div class="mech-icon"><i class="fa-solid fa-wind"></i></div>
-                        <div><div style="font-size: 12px; color: white; font-weight: 600;">3. Acceleration</div><div style="font-size: 11px; color: var(--text-muted);">Velocity doubles before hitting turbine blades.</div></div>
+                        <div><div style="font-weight: 600; font-size: 12px;">3. Acceleration</div><div style="font-size: 11px; color: var(--text-muted);">Velocity doubles before hitting turbine blades.</div></div>
                     </div>
                 </div>
             </div>
             
             <div class="img-box" style="height: 100%; overflow: hidden;">
-                <img src="slide4.jpg" onerror="this.src='https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
-                <div class="floating-badge" style="z-index: 50;">AI vision of design potential</div>
+                <img src="slide4.jpg" alt="Hybrid Tower">
+                <div class="img-label">AI vision of design potential</div>
             </div>
         </div>
     </div>
@@ -412,7 +329,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide5.jpg" onerror="this.src='https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                <img src="slide5.jpg" alt="CFD Simulation">
                 <div class="img-label">CFD Analysis: Flow Acceleration</div>
             </div>
         </div>
@@ -427,7 +344,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
                     <thead><tr style="background: rgba(255,255,255,0.03);"><th style="text-align: left; padding: 25px; color: var(--text-muted); font-weight: 600; font-size: 14px; letter-spacing: 1px;">METRIC</th><th style="text-align: left; padding: 25px; font-weight: 700;">GRID POWER</th><th style="text-align: left; padding: 25px; font-weight: 700;">STANDARD SOLAR</th><th style="text-align: left; padding: 25px; color: var(--neon-cyan); font-weight: 800; background: rgba(6, 182, 212, 0.1);">GHEL HYBRID</th></tr></thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>LCOE (Cost/kWh)</strong></td><td style="padding: 25px;">~27p</td><td style="padding: 25px;">~4-6p</td><td style="padding: 25px; color: var(--neon-green); font-weight: 700; background: rgba(6, 182, 212, 0.05);">4p to 6p</td></tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>LCOE (Cost/kWh)</strong></td><td style="padding: 25px;">~27p</td><td style="padding: 25px;">4p to 6p</td><td style="padding: 25px; color: var(--neon-green); font-weight: 700; background: rgba(6, 182, 212, 0.05);">5p</td></tr>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>Availability</strong></td><td style="padding: 25px;">24/7</td><td style="padding: 25px;">Daylight Only</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">Day & Night</td></tr>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 25px;"><strong>Winter Yield</strong></td><td style="padding: 25px;">High</td><td style="padding: 25px; color: var(--neon-red);">Very Low</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">High (Wind Peak)</td></tr>
                         <tr><td style="padding: 25px;"><strong>Footprint</strong></td><td style="padding: 25px;">N/A</td><td style="padding: 25px;">Large Roof Area</td><td style="padding: 25px; color: var(--text-white); background: rgba(6, 182, 212, 0.05);">0.7m² (Compact)</td></tr>
@@ -524,7 +441,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 </div>
             </div>
             <div class="img-box">
-                <img src="slide9.jpg" onerror="this.src='https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                <img src="slide9.jpg" alt="Wind Car Concept">
                 <div class="img-label">The "Wind Car" Concept</div>
             </div>
         </div>
@@ -597,7 +514,7 @@ strong { color: var(--text-white); font-weight: 700; }
                 <div class="card card-highlight"><div class="card-title">Investor Value</div><p class="card-text" style="color: var(--text-white);">Investors retain a continuing financial interest (royalties/equity) in the Spin-Off entity post-acquisition.</p></div>
             </div>
             <div class="img-box">
-                <img src="slide12.jpg" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                <img src="slide12.jpg" alt="Strategy Meeting">
                 <div class="img-label">Strategic Partnership Vision</div>
             </div>
         </div>
