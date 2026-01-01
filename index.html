@@ -736,26 +736,22 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
-    /* FIX MECH STEPS (How It Works) - EQUAL HEIGHT FIX */
+    /* FIX MECH STEPS (How It Works) - REDUCED HEIGHT FIX */
     .mech-step {
         display: flex !important;
         flex-direction: row !important;
         justify-content: flex-start !important;
-        align-items: flex-start !important;
+        align-items: center !important; /* Vertically center icon and text block */
         text-align: left !important;
         gap: 20px !important; 
-        padding: 15px !important;
-        flex: 1; /* Make all items flexible */
-        min-height: 100px; /* Ensure a consistent minimum height */
+        padding: 10px 15px !important; /* Less padding to reduce height */
+        flex: 1; 
+        min-height: 60px !important; /* Reduced from 100px */
     }
     
     /* Ensure the container of mech-steps is a flex column */
     .content .card > div[style*="How It Works"] + div,
     .content .card > .mech-step {
-        /* This selector might need to be specific to the parent of mech-steps if direct sibling selection fails, 
-           but typically mech-steps are direct children of the card or a container inside.
-           Assuming they are direct children or wrapped. 
-           Let's target the parent of .mech-step generally if possible, or just rely on mech-step flex properties. */
     }
 
     /* Icon Container */
@@ -771,6 +767,7 @@ strong { color: var(--text-white); font-weight: 700; }
         display: flex !important;
         flex-direction: column !important;
         width: 100%;
+        justify-content: center !important; /* Ensure text block centers vertically if step is taller */
     }
     
     .mech-step > div:last-child > div {
@@ -867,6 +864,8 @@ strong { color: var(--text-white); font-weight: 700; }
         if (input === 'GHEL2025') {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
+            // FORCE SCROLL TO TOP
+            window.scrollTo(0, 0);
         } else {
             error.style.display = 'block';
             document.getElementById('password').value = '';
@@ -1003,7 +1002,7 @@ strong { color: var(--text-white); font-weight: 700; }
                     </div>
                     <div class="mech-step" style="padding: 6px;">
                         <div class="mech-icon"><i class="fa-solid fa-compress"></i></div>
-                        <div><div style="font-weight: 600; font-size: 12px;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an intake scoop for air.</div></div>
+                        <div><div style="font-weight: 600; font-size: 12px;">2. Compression</div><div style="font-size: 11px; color: var(--text-muted);">Structure acts as an efficient intake scoop for air.</div></div>
                     </div>
                     <div class="mech-step" style="padding: 6px;">
                         <div class="mech-icon"><i class="fa-solid fa-wind"></i></div>
