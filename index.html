@@ -590,15 +590,16 @@ strong { color: var(--text-white); font-weight: 700; }
 
 /* MOBILE OPTIMIZATION */
 @media screen and (max-width: 1200px) {
-    body { padding: 20px; }
+    /* REMOVE PADDING FROM BODY TO FIX SCROLL START */
+    body { padding: 0 !important; margin: 0 !important; }
     
     .slide {
         width: 100%;
         height: auto;
         min-height: 700px;
         overflow: hidden !important; /* FIXED: Clips background orbs to stop scrolling */
-        margin-top: 20px;
-        border-radius: 12px;
+        margin-top: 0 !important; /* No top margin for first slide */
+        border-radius: 0; /* Full bleed */
     }
 
     .content {
@@ -627,6 +628,14 @@ strong { color: var(--text-white); font-weight: 700; }
         text-align: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
+    }
+    
+    /* --- FIX: LOCK SCREEN TEXT WRAPPING --- */
+    .lock-container p {
+        white-space: normal !important; /* Allow wrapping */
+        width: 100% !important;
+        max-width: 100% !important;
+        line-height: 1.4 !important;
     }
 
     /* --- SLIDE 1 SPECIFIC FIXES --- */
@@ -820,12 +829,20 @@ strong { color: var(--text-white); font-weight: 700; }
         overflow-x: auto;
         display: block;
         width: 100%;
-        margin-top: 40px !important; /* Increased spacing to stop overlap */
-        padding-top: 10px !important; /* Internal spacing too */
+        margin-top: 0 !important; 
+        padding-top: 40px !important; /* PADDING TO PREVENT COLLAPSE */
         position: relative;
+        text-align: left !important; /* FORCE LEFT */
     }
+    
+    /* 2. FORCE TABLE ALIGNMENT LEFT */
     .table-row {
         min-width: 600px;
+        text-align: left !important;
+    }
+    .table-cell {
+        justify-content: flex-start !important; /* Align content to left */
+        text-align: left !important;
     }
     
     /* Scroll Hint Visibility */
