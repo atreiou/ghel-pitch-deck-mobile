@@ -42,6 +42,8 @@ body {
     gap: 60px;
     font-family: 'Inter', sans-serif;
     color: var(--text-white);
+    overflow-x: hidden; /* IMPORTANT: Hides orb overflow on mobile */
+    width: 100%;
 }
 
 /* SLIDE BASE */
@@ -590,7 +592,7 @@ strong { color: var(--text-white); font-weight: 700; }
 
 /* MOBILE OPTIMIZATION */
 @media screen and (max-width: 1200px) {
-    /* RESTORE BODY PADDING FOR "FLOATING SLIDE" LOOK AND FIX RIGHT SPACE */
+    /* 1. RESTORE BODY PADDING FOR "FLOATING SLIDE" LOOK */
     body { 
         padding: 20px !important; /* Restore symmetrical padding */
         margin: 0 !important; 
@@ -603,11 +605,15 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100% !important; /* Fit within the body's padding */
         height: auto;
         min-height: 700px;
-        overflow: hidden !important; /* HIDE OVERFLOW TO FIX ORB SCROLL ISSUE */
+        /* CRITICAL: Allows neon orbs to be visible outside the card */
+        overflow: visible !important; 
         margin-top: 0 !important;
-        margin-bottom: 30px !important; /* Restore vertical gap between slides */
-        border-radius: 12px !important; /* Restore rounded corners */
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important; /* Restore distinct shadow */
+        /* CRITICAL: Restores vertical gaps between slides */
+        margin-bottom: 40px !important; 
+        /* CRITICAL: Restores card look */
+        border-radius: 16px !important; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important; 
+        background-color: var(--bg-dark); /* Ensure it's opaque */
     }
 
     /* Remove margin from the LAST slide so it doesn't push bottom too much if not needed */
@@ -763,14 +769,14 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
-    /* FIX MECH STEPS (How It Works) - REDUCED HEIGHT & CENTERED FIX */
+    /* FIX MECH STEPS (How It Works) - REDUCED HEIGHT & CENTERED ALIGNMENT FIX */
     .mech-step {
         display: flex !important;
         flex-direction: row !important;
         justify-content: flex-start !important;
         align-items: center !important; /* Vertically center icon and text block */
         text-align: left !important;
-        gap: 20px !important; 
+        gap: 15px !important; 
         padding: 10px 15px !important; 
         flex: 1; 
         min-height: 60px !important; 
@@ -859,7 +865,7 @@ strong { color: var(--text-white); font-weight: 700; }
     }
     
     /* 3. CENTER LAST COLUMN CELLS */
-    .table-cell:last-child {
+    .table-row > .table-cell:last-child {
         justify-content: center !important;
         text-align: center !important;
     }
@@ -946,25 +952,21 @@ strong { color: var(--text-white); font-weight: 700; }
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
             
-            // FORCE SCROLL TO TOP WITH IMMEDIATE ACTION AND TIMEOUT
-            // Timeout ensures browser renders layout change before scrolling
-            window.scrollTo(0, 0);
-            document.body.scrollTop = 0; 
-            document.documentElement.scrollTop = 0;
+            // BLUR INPUT TO CLOSE KEYBOARD
+            document.getElementById('password').blur();
 
+            // FORCE SCROLL TO TOP WITH 50MS TIMEOUT (PROVEN TO WORK)
             setTimeout(() => {
                 window.scrollTo(0, 0);
-                document.body.scrollTop = 0; // For Safari
-                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-            }, 100);
+                document.body.scrollTop = 0; 
+                document.documentElement.scrollTop = 0;
+            }, 50);
             
         } else {
             error.style.display = 'block';
             document.getElementById('password').value = '';
         }
     }
-    
-    // DRAG AND DROP REMOVED
 </script>
 
 <!-- DECK CONTENT -->
