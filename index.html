@@ -625,21 +625,55 @@ strong { color: var(--text-white); font-weight: 700; }
         margin-right: auto !important;
     }
 
-    /* Slide 1 Specifics for Mobile */
+    /* --- SLIDE 1 SPECIFIC FIXES --- */
+    
     .slide:first-child .content {
         display: flex !important;
         flex-direction: column !important;
         padding: 0 !important;
     }
-    .slide:first-child .content > div:first-child {
-        padding: 40px 20px !important;
-        order: 2;
-        align-items: center;
-    }
+
+    /* 1. Target the Title/Image Container (Top) */
     .title-img-container {
         height: 350px !important;
         width: 100% !important;
-        order: 1;
+        order: 1 !important; /* Forces image to top */
+    }
+
+    /* 2. Target the Text Container (Bottom) */
+    .slide:first-child .content > div:nth-child(2) {
+        order: 2 !important; /* Forces text below image */
+        padding: 30px 20px !important; /* Restores side padding, reduces vertical padding */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    /* 3. Center the Badges (Seed Round / R&D) */
+    .slide:first-child .content > div:nth-child(2) > div:first-child {
+        justify-content: center !important;
+        width: 100%;
+    }
+
+    /* 4. Optimize the Footer (Primary Entity / JV) */
+    .slide:first-child .content > div:nth-child(2) > div:last-child {
+        margin-top: 20px !important; /* Reduce large gap */
+        padding-top: 20px !important;
+        flex-direction: column !important; /* Stack vertically */
+        gap: 20px !important;
+        align-items: center !important;
+        width: 100% !important;
+        display: flex !important;
+    }
+    
+    /* Center text inside the Footer elements */
+    .slide:first-child .content > div:nth-child(2) > div:last-child > div {
+        align-items: center !important;
+        display: flex;
+        flex-direction: column;
+        text-align: center !important;
+        width: 100%;
     }
 
     /* Center Header */
