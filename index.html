@@ -590,22 +590,29 @@ strong { color: var(--text-white); font-weight: 700; }
 
 /* MOBILE OPTIMIZATION */
 @media screen and (max-width: 1200px) {
-    /* REMOVE PADDING FROM BODY TO FIX SCROLL START */
+    /* RESTORE BODY PADDING FOR "FLOATING SLIDE" LOOK AND FIX RIGHT SPACE */
     body { 
-        padding: 0 !important; 
+        padding: 10px !important; 
         margin: 0 !important; 
-        overflow-x: hidden; /* STOP HORIZONTAL SCROLL ONLY - KEEP BACKGROUND */
-        width: 100vw;
+        overflow-x: hidden; /* Stop horizontal scroll */
+        width: 100%; /* Use 100% instead of 100vw to respect padding */
+        box-sizing: border-box; /* Include padding in width calculation */
     }
     
     .slide {
-        width: 100%;
+        width: 100% !important; /* Fit within the body's padding */
         height: auto;
         min-height: 700px;
-        overflow: visible !important; /* REVERT: Allow orbs to show */
+        overflow: hidden !important; /* HIDE OVERFLOW TO FIX ORB SCROLL ISSUE */
         margin-top: 0 !important;
-        border-radius: 0;
-        /* Ensure orbs don't cause scrollbars on the slide itself, handled by body */
+        margin-bottom: 30px !important; /* Restore vertical gap between slides */
+        border-radius: 12px !important; /* Restore rounded corners */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important; /* Restore distinct shadow */
+    }
+
+    /* Remove margin from the LAST slide so it doesn't push bottom too much if not needed */
+    .slide:last-child {
+        margin-bottom: 0 !important;
     }
 
     .content {
@@ -818,7 +825,7 @@ strong { color: var(--text-white); font-weight: 700; }
     /* --- FIX: Proof of Concept Chart (Slide 9) --- */
     .chart-line-box {
         display: flex !important;
-        align-items: flex-end !important;
+        align-items: flex-end !important; /* FORCE BOTTOM ALIGNMENT */
         justify-content: space-around !important; /* Space bars evenly */
         width: 100% !important;
         height: 150px !important; /* Increased height for visibility on mobile */
