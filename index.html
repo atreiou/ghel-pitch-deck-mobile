@@ -32,6 +32,12 @@
 
 * { box-sizing: border-box; }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* GLOBAL FIX: Stops horizontal scroll at root level */
+}
+
 body {
     background-color: #1e293b;
     margin: 0;
@@ -42,8 +48,6 @@ body {
     gap: 60px;
     font-family: 'Inter', sans-serif;
     color: var(--text-white);
-    overflow-x: hidden; /* IMPORTANT: Hides orb overflow on mobile */
-    width: 100%;
 }
 
 /* SLIDE BASE */
@@ -615,6 +619,15 @@ strong { color: var(--text-white); font-weight: 700; }
         box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important; 
         background-color: var(--bg-dark); /* Ensure it's opaque */
     }
+    
+    /* FIX: Tame the orbs on mobile to reduce right-side gap */
+    .bg-orb {
+        width: 300px !important;
+        height: 300px !important;
+        filter: blur(70px) !important;
+    }
+    .orb-1 { right: -50px !important; top: -50px !important; }
+    .orb-2 { left: -50px !important; bottom: -50px !important; }
 
     /* Remove margin from the LAST slide so it doesn't push bottom too much if not needed */
     .slide:last-child {
@@ -957,25 +970,23 @@ strong { color: var(--text-white); font-weight: 700; }
             document.getElementById('main-content').style.display = 'flex';
             
             // 2. FORCE SCROLL TO TOP IMMEDIATELY
-            window.scrollTo(0, 0);
-            
-            // 3. FORCE TABLE SCROLL TO START
-            const tableContainer = document.querySelector('.table-container');
-            if(tableContainer) { tableContainer.scrollLeft = 0; }
-
-            // 4. TIMEOUTS TO CATCH VIEWPORT RESIZE
-            setTimeout(() => {
+            // Use requestAnimationFrame loop to fight browser auto-scroll
+            let scrollAttempts = 0;
+            const forceScrollTop = () => {
                 window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                
+                // Also force table scroll left
+                const tableContainer = document.querySelector('.table-container');
                 if(tableContainer) { tableContainer.scrollLeft = 0; }
-            }, 0);
-
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 100);
-            
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 300); // Longer timeout to wait for keyboard animation
+                
+                scrollAttempts++;
+                if (scrollAttempts < 30) { // Try for ~0.5 seconds
+                    requestAnimationFrame(forceScrollTop);
+                }
+            };
+            requestAnimationFrame(forceScrollTop);
             
         } else {
             error.style.display = 'block';
