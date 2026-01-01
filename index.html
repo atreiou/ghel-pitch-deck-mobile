@@ -605,6 +605,12 @@ strong { color: var(--text-white); font-weight: 700; }
         text-align: center; /* Base centering */
     }
 
+    /* Prevent desktop inline padding from breaking mobile centering */
+    .content > div {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
     /* Stack Grids Vertically */
     .grid-text-heavy, .grid-2, .grid-3, .grid-market {
         display: flex;
@@ -662,31 +668,47 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
-    /* Fix Impact Blocks (The bordered text in screenshot) */
+    /* Fix Impact Blocks */
     .impact-block {
         text-align: center !important;
-        border-left: none !important; /* Remove side border */
-        border-top: 3px solid; /* Move border to top for mobile */
+        border-left: none !important; 
+        border-top: 3px solid; 
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    /* Fix Consequence Blocks (Icon + Text) */
+    /* Fix Consequence Blocks */
     .consequence-block {
         justify-content: center !important;
         width: 100%;
     }
 
-    /* FIX STAT ROWS (The Footer in screenshot) */
+    /* FIX MECH STEPS (How It Works) */
+    .mech-step {
+        flex-direction: row-reverse !important; /* Puts Text first, then Icon */
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+    .mech-step > div {
+        text-align: center !important;
+        align-items: center !important;
+    }
+    .mech-step > div:nth-child(2) {
+         align-items: center !important;
+         display: flex;
+         flex-direction: column;
+    }
+
+    /* FIX STAT ROWS */
     .stat-row { 
         flex-direction: column; 
         gap: 15px; 
         width: 100%;
     }
-    
-    /* Target the text inside stat rows that was right-aligned */
     .stat-row > div {
         display: flex;
         flex-direction: column;
@@ -694,8 +716,6 @@ strong { color: var(--text-white); font-weight: 700; }
         text-align: center !important;
         width: 100%;
     }
-    
-    /* Ensure small text in footer centers */
     .stat-row div[style*="text-align: right"] {
         text-align: center !important;
         max-width: 100% !important;
