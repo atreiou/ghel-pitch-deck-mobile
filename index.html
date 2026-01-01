@@ -949,24 +949,41 @@ strong { color: var(--text-white); font-weight: 700; }
         const error = document.getElementById('error-msg');
         // Default Password: GHEL2025 (Case Sensitive)
         if (input === 'GHEL2025') {
+            
+            // 1. BLUR INPUT TO FORCE KEYBOARD CLOSE IMMEDIATELY
+            document.getElementById('password').blur();
+            
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
             
-            // BLUR INPUT TO CLOSE KEYBOARD
-            document.getElementById('password').blur();
+            // 2. FORCE SCROLL TO TOP IMMEDIATELY
+            window.scrollTo(0, 0);
+            
+            // 3. FORCE TABLE SCROLL TO START
+            const tableContainer = document.querySelector('.table-container');
+            if(tableContainer) { tableContainer.scrollLeft = 0; }
 
-            // FORCE SCROLL TO TOP WITH 50MS TIMEOUT (PROVEN TO WORK)
+            // 4. TIMEOUTS TO CATCH VIEWPORT RESIZE
             setTimeout(() => {
                 window.scrollTo(0, 0);
-                document.body.scrollTop = 0; 
-                document.documentElement.scrollTop = 0;
-            }, 50);
+                if(tableContainer) { tableContainer.scrollLeft = 0; }
+            }, 0);
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+            
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 300); // Longer timeout to wait for keyboard animation
             
         } else {
             error.style.display = 'block';
             document.getElementById('password').value = '';
         }
     }
+    
+    // DRAG AND DROP REMOVED
 </script>
 
 <!-- DECK CONTENT -->
@@ -1129,9 +1146,9 @@ strong { color: var(--text-white); font-weight: 700; }
                 <div class="table-container">
                     <div class="table-row" style="background: rgba(255,255,255,0.03);"><div class="table-cell" style="color: var(--text-muted); font-weight: 600; font-size: 12px; text-transform: uppercase;">METRIC</div><div class="table-cell" style="font-weight: 700;">GRID POWER</div><div class="table-cell" style="font-weight: 700;">STANDARD SOLAR</div><div class="table-cell" style="color: var(--neon-cyan); font-weight: 800; background: rgba(6, 182, 212, 0.1);">GHEL HYBRID</div></div>
                     <div class="table-row"><div class="table-cell"><strong>LCOE (Cost/kWh)</strong></div><div class="table-cell">~27p</div><div class="table-cell">4p to 6p</div><div class="table-cell" style="color: var(--neon-green); font-weight: 700;">5p</div></div>
-                    <div class="table-row"><div class="table-cell"><strong>Availability</strong></div><div class="table-cell">24/7</div><div class="table-cell">Daylight Only</div><td class="table-cell" style="color: var(--text-white);">Day & Night</td></div>
-                    <div class="table-row"><div class="table-cell"><strong>Winter Yield</strong></div><div class="table-cell">High</div><div class="table-cell" style="color: var(--neon-red);">Very Low</div><td class="table-cell" style="color: var(--text-white);">High (Wind Peak)</td></div>
-                    <div class="table-row"><div class="table-cell"><strong>Footprint</strong></div><div class="table-cell">N/A</div><div class="table-cell">Large Roof Area</div><td class="table-cell" style="color: var(--text-white);">0.7m² (Compact)</td></div>
+                    <div class="table-row"><div class="table-cell"><strong>Availability</strong></div><div class="table-cell">24/7</div><div class="table-cell">Daylight Only</div><div class="table-cell" style="color: var(--text-white);">Day & Night</div></div>
+                    <div class="table-row"><div class="table-cell"><strong>Winter Yield</strong></div><div class="table-cell">High</div><div class="table-cell" style="color: var(--neon-red);">Very Low</div><div class="table-cell" style="color: var(--text-white);">High (Wind Peak)</div></div>
+                    <div class="table-row"><div class="table-cell"><strong>Footprint</strong></div><div class="table-cell">N/A</div><div class="table-cell">Large Roof Area</div><div class="table-cell" style="color: var(--text-white);">0.7m² (Compact)</div></div>
                 </div>
             </div>
             <div style="margin-top: 20px; display: flex; gap: 20px;">
