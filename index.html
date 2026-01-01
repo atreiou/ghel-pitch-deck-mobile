@@ -596,7 +596,7 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
         height: auto;
         min-height: 700px;
-        overflow: visible;
+        overflow: hidden !important; /* FIXED: Clips background orbs to stop scrolling */
         margin-top: 20px;
         border-radius: 12px;
     }
@@ -866,6 +866,11 @@ strong { color: var(--text-white); font-weight: 700; }
         border-radius: 6px !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+    
+    /* --- FIX: PREVENT PIE CHART DISTORTION --- */
+    .pie-wrapper {
+        flex-shrink: 0 !important;
     }
 
     /* Lock Screen Mobile */
