@@ -217,21 +217,9 @@ strong { color: var(--text-white); font-weight: 700; }
     height: 100%;
     object-fit: cover;
     opacity: 0.9;
-    cursor: pointer;
+    cursor: default; /* Removed pointer cursor */
 }
-.img-box img:hover {
-    opacity: 0.6;
-}
-.img-box::after, .title-img-container::after {
-    content: 'Drag & Drop Image Here';
-    position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    color: white; font-size: 12px; font-weight: bold;
-    pointer-events: none; opacity: 0; transition: opacity 0.2s;
-    background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 4px;
-    z-index: 10;
-}
-.img-box:hover::after, .title-img-container:hover::after { opacity: 1; }
+/* Removed hover/drag effects */
 
 .title-img-container {
     position: relative;
@@ -833,6 +821,7 @@ strong { color: var(--text-white); font-weight: 700; }
         display: block;
         width: 100%;
         margin-top: 40px !important; /* Increased spacing to stop overlap */
+        padding-top: 10px !important; /* Internal spacing too */
         position: relative;
     }
     .table-row {
@@ -842,7 +831,7 @@ strong { color: var(--text-white); font-weight: 700; }
     /* Scroll Hint Visibility */
     .mobile-scroll-hint {
         display: block !important;
-        margin-bottom: 10px; /* Space between hint and table */
+        margin-bottom: 20px; /* Space between hint and table */
     }
 
     /* 2. SYMMETRICAL CARDS below table */
@@ -860,6 +849,12 @@ strong { color: var(--text-white); font-weight: 700; }
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+
+    /* --- FIX: Slide 8 Primary Investment Margin --- */
+    /* Target the big card container (Money Slide) on mobile */
+    .slide:nth-child(8) .card-highlight {
+        margin-top: 20px !important; /* Add spacing above */
     }
 
     /* Lock Screen Mobile */
@@ -913,29 +908,7 @@ strong { color: var(--text-white); font-weight: 700; }
         }
     }
     
-    // DRAG AND DROP LOGIC (Saves Base64)
-    document.addEventListener('DOMContentLoaded', () => {
-        const containers = document.querySelectorAll('.img-box, .title-img-container');
-        containers.forEach(container => {
-            const img = container.querySelector('img');
-            container.addEventListener('dragover', (e) => { e.preventDefault(); img.style.opacity = '0.5'; container.style.outline = '4px solid #10b981'; });
-            container.addEventListener('dragleave', (e) => { img.style.opacity = '0.9'; container.style.outline = 'none'; });
-            container.addEventListener('drop', (e) => {
-                e.preventDefault(); 
-                img.style.opacity = '1'; 
-                container.style.outline = 'none';
-                
-                const file = e.dataTransfer.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => { 
-                        img.src = e.target.result; 
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
-    });
+    // DRAG AND DROP REMOVED
 </script>
 
 <!-- DECK CONTENT -->
