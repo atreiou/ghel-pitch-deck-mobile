@@ -719,22 +719,36 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
-    /* FIX MECH STEPS (How It Works) */
+    /* FIX MECH STEPS (How It Works) - Left Aligned Row */
     .mech-step {
-        flex-direction: row-reverse !important; /* Puts Text first, then Icon */
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 15px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 20px !important; /* "then a space" */
+        padding: 15px !important;
     }
-    .mech-step > div {
-        text-align: center !important;
-        align-items: center !important;
+    
+    /* Icon Container */
+    .mech-icon {
+        margin: 0 !important; /* Ensure no auto margins from global centering */
+        flex-shrink: 0;
     }
-    .mech-step > div:nth-child(2) {
-         align-items: center !important;
-         display: flex;
-         flex-direction: column;
+
+    /* Text Container */
+    .mech-step > div:last-child {
+        text-align: left !important;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+    }
+    
+    /* Text elements inside */
+    .mech-step > div:last-child > div {
+        text-align: left !important;
+        margin-left: 0 !important;
     }
 
     /* FIX STAT ROWS */
