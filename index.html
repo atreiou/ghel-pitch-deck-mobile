@@ -719,6 +719,24 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
+    /* --- FIX: Market Segments Icon Spacing (Slide 7) --- */
+    /* Target icons specifically in the market grid headers */
+    .grid-market .card .card-title i,
+    .grid-market .card div[style*="space-between"] i {
+        margin-left: 15px !important; /* Force space before icon */
+    }
+
+    /* --- FIX: Strategic Spin-Off Padding (Slide 11) --- */
+    /* Target the text block inside the strategic spin off card */
+    .slide:nth-child(11) .content > div:last-child {
+        padding: 40px !important; /* Ensure generic padding stays */
+    }
+    /* Add specific padding to inner text container to avoid edge touching */
+    .slide:nth-child(11) .content > div:last-child > div {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
     /* Fix Impact Blocks */
     .impact-block {
         text-align: center !important;
@@ -749,11 +767,6 @@ strong { color: var(--text-white); font-weight: 700; }
         min-height: 60px !important; /* Reduced from 100px */
     }
     
-    /* Ensure the container of mech-steps is a flex column */
-    .content .card > div[style*="How It Works"] + div,
-    .content .card > .mech-step {
-    }
-
     /* Icon Container */
     .mech-icon {
         margin: 0 !important; 
@@ -800,32 +813,53 @@ strong { color: var(--text-white); font-weight: 700; }
         order: -1; 
     }
 
-    /* Mobile Table Scroll & Layout */
+    /* --- FIX: Proof of Concept Chart (Slide 9) --- */
+    .chart-line-box {
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: space-around !important; /* Space bars evenly */
+        width: 100% !important;
+        height: 150px !important; /* Increased height for visibility on mobile */
+    }
+    .chart-bar-v {
+        width: 30px !important; /* Fixed width for bars on mobile */
+        flex: none !important; /* Stop flexing width */
+    }
+
+    /* --- FIX: 5p Advantage Slide (Slide 6) --- */
+    /* 1. Fix Table Overlap & Scroll Hint */
     .table-container {
         overflow-x: auto;
         display: block;
         width: 100%;
-        margin-top: 20px !important; /* Fix overlap */
+        margin-top: 40px !important; /* Increased spacing to stop overlap */
         position: relative;
     }
     .table-row {
         min-width: 600px;
     }
     
-    /* Scroll Hint */
+    /* Scroll Hint Visibility */
     .mobile-scroll-hint {
         display: block !important;
+        margin-bottom: 10px; /* Space between hint and table */
     }
 
-    /* SYMMETRICAL CARDS on Slide 6 */
-    /* Target the container holding the two bottom cards */
-    .slide:nth-child(7) .content > div:last-child {
+    /* 2. SYMMETRICAL CARDS below table */
+    /* Target container of the bottom two cards */
+    .slide:nth-child(6) .content > div:last-child {
         flex-direction: column !important;
         gap: 20px !important;
+        display: flex !important;
     }
-    .slide:nth-child(7) .content > div:last-child > .card {
+    /* Force both cards to stretch */
+    .slide:nth-child(6) .content > div:last-child > .card {
         width: 100% !important;
-        flex: 1 !important; /* Force equal height if in flex container, or just full width */
+        flex: 1 1 auto !important; /* Grow and shrink as needed */
+        min-height: 80px !important; /* Ensure minimum size */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* Lock Screen Mobile */
@@ -864,8 +898,15 @@ strong { color: var(--text-white); font-weight: 700; }
         if (input === 'GHEL2025') {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
-            // FORCE SCROLL TO TOP
-            window.scrollTo(0, 0);
+            
+            // FORCE SCROLL TO TOP WITH TIMEOUT
+            // Timeout ensures browser renders layout change before scrolling
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }, 50);
+            
         } else {
             error.style.display = 'block';
             document.getElementById('password').value = '';
