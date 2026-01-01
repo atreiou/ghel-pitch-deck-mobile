@@ -217,9 +217,8 @@ strong { color: var(--text-white); font-weight: 700; }
     height: 100%;
     object-fit: cover;
     opacity: 0.9;
-    cursor: default; /* Removed pointer cursor */
+    cursor: default; 
 }
-/* Removed hover/drag effects */
 
 .title-img-container {
     position: relative;
@@ -808,6 +807,7 @@ strong { color: var(--text-white); font-weight: 700; }
         justify-content: space-around !important; /* Space bars evenly */
         width: 100% !important;
         height: 150px !important; /* Increased height for visibility on mobile */
+        margin-bottom: 40px !important; /* Spacing for labels */
     }
     .chart-bar-v {
         width: 30px !important; /* Fixed width for bars on mobile */
@@ -851,10 +851,21 @@ strong { color: var(--text-white); font-weight: 700; }
         justify-content: center !important;
     }
 
-    /* --- FIX: Slide 8 Primary Investment Margin --- */
-    /* Target the big card container (Money Slide) on mobile */
+    /* --- FIX: Slide 8 Primary Investment Margin & Inner Box --- */
+    
+    /* 1. Force the card to allow inset content */
     .slide:nth-child(8) .card-highlight {
-        margin-top: 20px !important; /* Add spacing above */
+        margin-top: 20px !important; 
+        padding: 20px !important; /* FORCE PADDING ON PARENT */
+        align-items: stretch !important; /* STOP CENTERING SHRINK */
+    }
+    
+    /* 2. Force the inner green box to fill the space and look like a box */
+    .slide:nth-child(8) .card-highlight > div {
+        width: 100% !important;
+        border-radius: 6px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     /* Lock Screen Mobile */
@@ -1132,8 +1143,8 @@ strong { color: var(--text-white); font-weight: 700; }
                     <div class="card" style="padding: 15px;"><div style="font-size: 12px; color: var(--neon-purple);">Maintenance</div><div style="font-size: 20px; font-weight: 700;">£250<span style="font-size: 12px;">/yr</span></div></div>
                 </div>
             </div>
-            <div class="card card-highlight" style="padding: 0; gap: 0;">
-                <div style="padding: 20px; background: rgba(16, 185, 129, 0.1); border-bottom: 1px solid rgba(255,255,255,0.1);"><div style="font-size: 12px; text-transform: uppercase; color: var(--neon-green); margin-bottom: 5px;">Primary Investment</div><div style="display: flex; justify-content: space-between; align-items: flex-end;"><span style="font-size: 18px; font-weight: 700; color: white;">GHEL 3kW System</span><span style="font-size: 32px; font-weight: 700; color: var(--neon-green);">£7,000</span></div></div>
+            <div class="card card-highlight" style="padding: 20px; gap: 0;">
+                <div style="padding: 20px; background: rgba(16, 185, 129, 0.1);"><div style="font-size: 12px; text-transform: uppercase; color: var(--neon-green); margin-bottom: 5px;">Primary Investment</div><div style="display: flex; justify-content: space-between; align-items: flex-end;"><span style="font-size: 18px; font-weight: 700; color: white;">GHEL 3kW System</span><span style="font-size: 32px; font-weight: 700; color: var(--neon-green);">£7,000</span></div></div>
                 <div style="padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);"><div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;">Competitor Comparison</div><div style="display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);"><span style="font-size: 16px;">Solar 6kW System</span><span style="font-size: 20px; font-weight: 600;">£10,500</span></div></div>
                 <div style="padding: 20px; flex-grow: 1; display: flex; align-items: center; justify-content: space-between;">
                     <div><div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;">Daily Winter Yield</div><div style="font-size: 24px; font-weight: 700; color: white;">~12.6 kWh</div><div style="font-size: 11px; color: var(--text-muted); max-width: 150px; margin-top: 5px;">vs 3.5kWh for Solar in Winter</div></div>
