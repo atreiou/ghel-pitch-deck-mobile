@@ -592,7 +592,7 @@ strong { color: var(--text-white); font-weight: 700; }
 @media screen and (max-width: 1200px) {
     /* RESTORE BODY PADDING FOR "FLOATING SLIDE" LOOK AND FIX RIGHT SPACE */
     body { 
-        padding: 10px !important; 
+        padding: 20px !important; /* Restore symmetrical padding */
         margin: 0 !important; 
         overflow-x: hidden; /* Stop horizontal scroll */
         width: 100%; /* Use 100% instead of 100vw to respect padding */
@@ -763,7 +763,7 @@ strong { color: var(--text-white); font-weight: 700; }
         width: 100%;
     }
 
-    /* FIX MECH STEPS (How It Works) - REDUCED HEIGHT FIX */
+    /* FIX MECH STEPS (How It Works) - REDUCED HEIGHT & CENTERED FIX */
     .mech-step {
         display: flex !important;
         flex-direction: row !important;
@@ -771,9 +771,9 @@ strong { color: var(--text-white); font-weight: 700; }
         align-items: center !important; /* Vertically center icon and text block */
         text-align: left !important;
         gap: 20px !important; 
-        padding: 10px 15px !important; /* Less padding to reduce height */
+        padding: 10px 15px !important; 
         flex: 1; 
-        min-height: 60px !important; /* Reduced from 100px */
+        min-height: 60px !important; 
     }
     
     /* Icon Container */
@@ -789,7 +789,7 @@ strong { color: var(--text-white); font-weight: 700; }
         display: flex !important;
         flex-direction: column !important;
         width: 100%;
-        justify-content: center !important; /* Ensure text block centers vertically if step is taller */
+        justify-content: center !important; /* Ensure text block centers vertically */
     }
     
     .mech-step > div:last-child > div {
@@ -856,6 +856,12 @@ strong { color: var(--text-white); font-weight: 700; }
     .table-cell {
         justify-content: flex-start !important; /* Align content to left */
         text-align: left !important;
+    }
+    
+    /* 3. CENTER LAST COLUMN CELLS */
+    .table-cell:last-child {
+        justify-content: center !important;
+        text-align: center !important;
     }
     
     /* Scroll Hint Visibility */
@@ -940,8 +946,12 @@ strong { color: var(--text-white); font-weight: 700; }
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
             
-            // FORCE SCROLL TO TOP WITH TIMEOUT
+            // FORCE SCROLL TO TOP WITH IMMEDIATE ACTION AND TIMEOUT
             // Timeout ensures browser renders layout change before scrolling
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0;
+
             setTimeout(() => {
                 window.scrollTo(0, 0);
                 document.body.scrollTop = 0; // For Safari
