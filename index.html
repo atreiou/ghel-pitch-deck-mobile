@@ -591,15 +591,21 @@ strong { color: var(--text-white); font-weight: 700; }
 /* MOBILE OPTIMIZATION */
 @media screen and (max-width: 1200px) {
     /* REMOVE PADDING FROM BODY TO FIX SCROLL START */
-    body { padding: 0 !important; margin: 0 !important; }
+    body { 
+        padding: 0 !important; 
+        margin: 0 !important; 
+        overflow-x: hidden; /* STOP HORIZONTAL SCROLL ONLY - KEEP BACKGROUND */
+        width: 100vw;
+    }
     
     .slide {
         width: 100%;
         height: auto;
         min-height: 700px;
-        overflow: hidden !important; /* FIXED: Clips background orbs to stop scrolling */
-        margin-top: 0 !important; /* No top margin for first slide */
-        border-radius: 0; /* Full bleed */
+        overflow: visible !important; /* REVERT: Allow orbs to show */
+        margin-top: 0 !important;
+        border-radius: 0;
+        /* Ensure orbs don't cause scrollbars on the slide itself, handled by body */
     }
 
     .content {
